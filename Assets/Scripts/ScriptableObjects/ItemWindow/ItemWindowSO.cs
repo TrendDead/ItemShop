@@ -10,5 +10,5 @@ public class ItemWindowSO : ScriptableObject
 
     public bool LimitedOffer;
     public int SaleTimeInSeconds;
-    public List<PurchaseValue> WayToBuy;
+    public List<AountOfCurency> WayToBuy;
 }
