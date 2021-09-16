@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: item1
   m_EditorClassIdentifier: 
   LimitedOffer: 1
-  SaleTimeInSeconds: 10
+  SaleTimeInSeconds: 50
   WayToBuy:
   - _currency: {fileID: 11400000, guid: 9ed917fa986a6af478e89b100912da71, type: 2}
     _aountOfCurency: 100
