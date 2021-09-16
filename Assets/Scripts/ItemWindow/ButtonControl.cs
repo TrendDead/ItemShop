@@ -64,7 +64,7 @@ public class ButtonControl : MonoBehaviour
         }
         if (flagBuy)
         {
-            GetComponentInParent<ItemWindowuTimeControl>().IsItemBuy();
+            GetComponentInParent<ItemWindowuTimeControl>().ItemBuy();
         }
     }
 }

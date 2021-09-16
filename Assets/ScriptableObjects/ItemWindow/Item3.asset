@@ -18,4 +18,4 @@ MonoBehaviour:
   - _currency: {fileID: 11400000, guid: 9ed917fa986a6af478e89b100912da71, type: 2}
     _aountOfCurency: 1100
   - _currency: {fileID: 11400000, guid: 5c740a6da01e2264d9ff6578b583d67e, type: 2}
-    _aountOfCurency: 850
+    _aountOfCurency: 20
