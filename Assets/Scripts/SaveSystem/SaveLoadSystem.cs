@@ -40,7 +40,8 @@ public class SaveLoadSystem : MonoBehaviour
         {
             PlayerPrefsSafe.SetFloat(curencies._currency.CurrecyName, curencies._aountOfCurency);
         }
-        PlayerPrefs.SetString("LastSassion", DateTime.Now.ToString());
+        if (!PlayerPrefs.HasKey("FirstSassion"))
+            PlayerPrefs.SetString("FirstSassion", DateTime.Now.ToString());
         //DeleteSave();
     }
 

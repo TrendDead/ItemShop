@@ -10,14 +10,14 @@ public class CheckTimeOffline : MonoBehaviour
         CheckOffine();
     }
 
-    public TimeSpan CheckOffine()
+    public DateTime CheckOffine()
     {
-        TimeSpan ts = TimeSpan.Zero;
-        if (PlayerPrefs.HasKey("LastSassion"))
+        DateTime _firstRunTime = DateTime.Now;
+        if (PlayerPrefs.HasKey("FirstSassion"))
         {
-            ts = DateTime.Now - DateTime.Parse(PlayerPrefs.GetString("LastSassion"));
+            _firstRunTime = DateTime.Parse(PlayerPrefs.GetString("FirstSassion"));
         }
-        return ts;
+        return _firstRunTime;
     }
 
 }
