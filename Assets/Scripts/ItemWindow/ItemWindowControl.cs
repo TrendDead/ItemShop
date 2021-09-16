@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class ItemWindowControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private ItemWindowSO _itemWindowSO;
+
+    private MoneyTracking _moneyTracking;
+    private List<AountOfCurency> _listCurrency;
+
+    public ItemWindowSO GetItemWindow => _itemWindowSO;
+    public List<AountOfCurency> GetListPlayerCurrency => _listCurrency;
+
+    private void Awake()
     {
-        
+        _moneyTracking = FindObjectOfType<MoneyTracking>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        _moneyTracking.UpdateDataCurrency += UpdateListCurrency;
     }
+
+    private void OnDisable()
+    {
+        _moneyTracking.UpdateDataCurrency -= UpdateListCurrency;
+    }
+
+    private void UpdateListCurrency(List<AountOfCurency> listCurrency)
+    {
+        _listCurrency = listCurrency;
+    }
+
+    public void Buy(string nameCurrency, float purchasePrice)
+    {
+        _moneyTracking.UpdateData(nameCurrency, purchasePrice);
+    }
+
 }
