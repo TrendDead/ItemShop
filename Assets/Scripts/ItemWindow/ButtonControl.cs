@@ -34,22 +34,33 @@ public class ButtonControl : MonoBehaviour
     {
         _listPlayerCurrency = _itemWindowControl.GetListPlayerCurrency;
         bool flagBuy = false;
-        foreach (var playerCurrency in _listPlayerCurrency)
+        bool wrong—urrency = false;
+        for (int i = 0; i < _listPlayerCurrency.Count; i++)
         {
-            if (playerCurrency._currency.CurrecyName == _currecyName)
+            AountOfCurency playerCurrency = _listPlayerCurrency[i];
+            if (playerCurrency._currency.CurrecyName == _currecyName && _currency != null)
             {
                 if (_currency._aountOfCurency <= playerCurrency._aountOfCurency)
                 {
                     flagBuy = true;
                     _itemWindowControl.Buy(_currecyName, _currency._aountOfCurency);
-                    Debug.Log(_currency._aountOfCurency);
                     break;
                 }
                 else
                 {
                     Debug.Log("Insufficient funds");
+                    break;
                 }
             }
+            else
+                if (i == _listPlayerCurrency.Count - 1)
+                {
+                    wrong—urrency = true;
+                }
+        }
+        if (wrong—urrency)
+        {
+            Debug.Log("This item cannot be purchased for the specified currency");
         }
         if (flagBuy)
         {
