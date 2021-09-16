@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemWindowControl : MonoBehaviour
+public class ItemWindowuBuyControl : MonoBehaviour
 {
     [SerializeField]
     private ItemWindowSO _itemWindowSO;
+
+    [SerializeField]
+    private AfterBuy _buttonSistemAfterBuy;
+    private BeforeBuy _buttonSistemBeforeBuy;
 
     private MoneyTracking _moneyTracking;
     private List<AountOfCurency> _listCurrency;
@@ -16,6 +20,7 @@ public class ItemWindowControl : MonoBehaviour
     private void Awake()
     {
         _moneyTracking = FindObjectOfType<MoneyTracking>();
+        _buttonSistemBeforeBuy = GetComponentInChildren<BeforeBuy>();
     }
 
     private void OnEnable()
@@ -36,6 +41,14 @@ public class ItemWindowControl : MonoBehaviour
     public void Buy(string nameCurrency, float purchasePrice)
     {
         _moneyTracking.UpdateData(nameCurrency, purchasePrice);
+        _buttonSistemBeforeBuy.gameObject.SetActive(false);
+        _buttonSistemAfterBuy.gameObject.SetActive(true);
+    }
+
+    public void IsTimeOut()
+    {
+        _buttonSistemBeforeBuy.gameObject.SetActive(false);
+        _buttonSistemAfterBuy.gameObject.SetActive(false);
     }
 
 }
