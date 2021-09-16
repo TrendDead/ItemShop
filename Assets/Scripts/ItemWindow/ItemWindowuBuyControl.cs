@@ -14,13 +14,23 @@ public class ItemWindowuBuyControl : MonoBehaviour
     private MoneyTracking _moneyTracking;
     private List<AountOfCurency> _listCurrency;
 
+    
+    private bool _isItemBuy = false;
+
     public ItemWindowSO GetItemWindow => _itemWindowSO;
     public List<AountOfCurency> GetListPlayerCurrency => _listCurrency;
+    public bool IsItemBuy => _isItemBuy;
 
     private void Awake()
     {
         _moneyTracking = FindObjectOfType<MoneyTracking>();
         _buttonSistemBeforeBuy = GetComponentInChildren<BeforeBuy>();
+    }
+
+    private void Start()
+    {
+        _isItemBuy = PlayerPrefs.GetInt(gameObject.name) == 1 ? true : false;
+        if (_isItemBuy) LoadingBuy();
     }
 
     private void OnEnable()
@@ -41,6 +51,13 @@ public class ItemWindowuBuyControl : MonoBehaviour
     public void Buy(string nameCurrency, float purchasePrice)
     {
         _moneyTracking.UpdateData(nameCurrency, purchasePrice);
+        _buttonSistemBeforeBuy.gameObject.SetActive(false);
+        _buttonSistemAfterBuy.gameObject.SetActive(true);
+        _isItemBuy = true;
+    }
+
+    public void LoadingBuy()
+    {
         _buttonSistemBeforeBuy.gameObject.SetActive(false);
         _buttonSistemAfterBuy.gameObject.SetActive(true);
     }

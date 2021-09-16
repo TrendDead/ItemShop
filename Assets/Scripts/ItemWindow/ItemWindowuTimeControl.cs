@@ -44,11 +44,24 @@ public class ItemWindowuTimeControl : MonoBehaviour
         _tameLeft = TimeSpan.FromSeconds((double)(new decimal(_itemWindowSO.SaleTimeInSeconds)));
     }
 
+    private void Start()
+    {
+        _isItemBuy = PlayerPrefs.GetInt(gameObject.name) == 1 ? true : false;
+        if (_isItemBuy)
+        {
+            ItemBuy();
+        }
+    }
+
     private void Update()
     {
         if (_itemWindowSO.LimitedOffer && !_isItemBuy)
         {
-            _timeCurrencyActive = _tameLeft + ((_lastRunTime - DateTime.Now) + _lastSassion);
+            //Debug.Log(_lastRunTime.Second); //59 => 28
+            //Debug.Log(_lastSassion.TotalSeconds); //4 => 7
+            //Debug.Log(_tameLeft); //4 => 7
+            //Debug.Log(_lastRunTime - DateTime.Now); //4 => 7
+            _timeCurrencyActive = _tameLeft + ((_lastRunTime - (DateTime.Now + _lastSassion)));
             if (_timeCurrencyActive.TotalSeconds > 0)
                 _viewTime.text = (string.Format("Time left: {0}:{1}:{2}", _timeCurrencyActive.Hours, _timeCurrencyActive.Minutes, _timeCurrencyActive.Seconds));
             else
@@ -60,7 +73,6 @@ public class ItemWindowuTimeControl : MonoBehaviour
         }
         else
         {
-            //_viewTime.gameObject.SetActive(false);
             _activeTime = false;
         }
         
@@ -73,8 +85,9 @@ public class ItemWindowuTimeControl : MonoBehaviour
         GetComponent<ItemWindowuBuyControl>().IsTimeOut();
     }
 
-    public void IsItemBuy()
+    public void ItemBuy()
     {
+        _viewTime.gameObject.SetActive(true);
         _isItemBuy = true;
         _viewTime.text = "Use Item";
     }

@@ -20,16 +20,4 @@ public class CheckTimeOffline : MonoBehaviour
         return ts;
     }
 
-    private void OnApplicationQuit()
-    {
-        //PlayerPrefs.SetString("LastSassion", DateTime.Now.ToString());
-    }
-
-    private void OnApplicationPause(bool pause)
-    {
-        if (pause)
-        {
-           // PlayerPrefs.SetString("LastSassion", DateTime.Now.ToString());
-        }
-    }
 }

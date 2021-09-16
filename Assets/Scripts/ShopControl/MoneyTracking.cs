@@ -10,14 +10,15 @@ public class MoneyTracking : MonoBehaviour
     
     public event UnityAction<List<AountOfCurency>> UpdateDataCurrency;
 
-    private void Awake()
+    private void Start()
     {
         _allCurrency = GetComponent<AllCurrency>();
         _listCurrency = _allCurrency.GetAllCurrency;
-    }
-
-    private void Start()
-    {
+        foreach (var currency in _listCurrency)
+        {
+            if (PlayerPrefs.HasKey(currency._currency.CurrecyName))
+                currency._aountOfCurency = PlayerPrefs.GetFloat(currency._currency.CurrecyName);
+        }
         UpdateDataCurrency?.Invoke(_listCurrency);
     }
 
