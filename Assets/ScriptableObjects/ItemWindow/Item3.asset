@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f7abc83b29f4c540b355894ac842952, type: 3}
-  m_Name: item1
+  m_Name: Item3
   m_EditorClassIdentifier: 
   LimitedOffer: 1
-  SaleTimeInSeconds: 500
+  SaleTimeInSeconds: 10000
   WayToBuy:
   - _currency: {fileID: 11400000, guid: 9ed917fa986a6af478e89b100912da71, type: 2}
-    _aountOfCurency: 100
+    _aountOfCurency: 1100
   - _currency: {fileID: 11400000, guid: 5c740a6da01e2264d9ff6578b583d67e, type: 2}
-    _aountOfCurency: 20
+    _aountOfCurency: 850

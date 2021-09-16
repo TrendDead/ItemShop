@@ -13,6 +13,6 @@ public class ScrollViewContentAdapter : MonoBehaviour
     private void Start()
     {
         float width = Screen.width;     
-        _gridLayout.constraintCount = (int)(width / 140);  
+        _gridLayout.constraintCount = (int)(width / _gridLayout.cellSize.x);  
     }
 }
