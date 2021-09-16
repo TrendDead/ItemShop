@@ -16,8 +16,8 @@ public class MoneyTracking : MonoBehaviour
         _listCurrency = _allCurrency.GetAllCurrency;
         foreach (var currency in _listCurrency)
         {
-            if (PlayerPrefs.HasKey(currency._currency.CurrecyName))
-                currency._aountOfCurency = PlayerPrefs.GetFloat(currency._currency.CurrecyName);
+            if (PlayerPrefsSafe.HasKey(currency._currency.CurrecyName))
+                currency._aountOfCurency = PlayerPrefsSafe.GetFloat(currency._currency.CurrecyName);
         }
         UpdateDataCurrency?.Invoke(_listCurrency);
     }

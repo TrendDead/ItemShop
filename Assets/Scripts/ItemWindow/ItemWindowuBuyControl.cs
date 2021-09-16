@@ -29,7 +29,7 @@ public class ItemWindowuBuyControl : MonoBehaviour
 
     private void Start()
     {
-        _isItemBuy = PlayerPrefs.GetInt(gameObject.name) == 1 ? true : false;
+        _isItemBuy = PlayerPrefsSafe.GetInt(gameObject.name) == 1 ? true : false;
         if (_isItemBuy) LoadingBuy();
     }
 

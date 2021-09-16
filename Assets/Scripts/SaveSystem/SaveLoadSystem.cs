@@ -34,18 +34,26 @@ public class SaveLoadSystem : MonoBehaviour
         {
             bool isBuy = item.GetComponent<ItemWindowuBuyControl>().IsItemBuy;
             int boolInt = isBuy ? 1 : 0;
-            PlayerPrefs.SetInt(item.name, boolInt);
+            PlayerPrefsSafe.SetInt(item.name, boolInt);
         }
         foreach (var curencies in _aountOfCurencies)
         {
-            PlayerPrefs.SetFloat(curencies._currency.CurrecyName, curencies._aountOfCurency);
+            PlayerPrefsSafe.SetFloat(curencies._currency.CurrecyName, curencies._aountOfCurency);
         }
         PlayerPrefs.SetString("LastSassion", DateTime.Now.ToString());
-        DeleteSvae();
+        //DeleteSave();
     }
 
-    private void DeleteSvae()
+    private void DeleteSave()
     {
         PlayerPrefs.DeleteAll();
+        foreach (var item in _items)
+        {
+            PlayerPrefsSafe.DeleteKey(item.name);
+        }
+        foreach (var curencies in _aountOfCurencies)
+        {
+            PlayerPrefsSafe.DeleteKey(curencies._currency.CurrecyName);
+        }
     }
 }

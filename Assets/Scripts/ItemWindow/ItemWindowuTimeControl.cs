@@ -46,7 +46,7 @@ public class ItemWindowuTimeControl : MonoBehaviour
 
     private void Start()
     {
-        _isItemBuy = PlayerPrefs.GetInt(gameObject.name) == 1 ? true : false;
+        _isItemBuy = PlayerPrefsSafe.GetInt(gameObject.name) == 1 ? true : false;
         if (_isItemBuy)
         {
             ItemBuy();
@@ -57,10 +57,6 @@ public class ItemWindowuTimeControl : MonoBehaviour
     {
         if (_itemWindowSO.LimitedOffer && !_isItemBuy)
         {
-            //Debug.Log(_lastRunTime.Second); //59 => 28
-            //Debug.Log(_lastSassion.TotalSeconds); //4 => 7
-            //Debug.Log(_tameLeft); //4 => 7
-            //Debug.Log(_lastRunTime - DateTime.Now); //4 => 7
             _timeCurrencyActive = _tameLeft + ((_lastRunTime - (DateTime.Now + _lastSassion)));
             if (_timeCurrencyActive.TotalSeconds > 0)
                 _viewTime.text = (string.Format("Time left: {0}:{1}:{2}", _timeCurrencyActive.Hours, _timeCurrencyActive.Minutes, _timeCurrencyActive.Seconds));
