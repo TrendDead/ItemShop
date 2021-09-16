@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7abc83b29f4c540b355894ac842952, type: 3}
+  m_Name: Item3
+  m_EditorClassIdentifier: 
+  LimitedOffer: 1
+  SaleTimeInSeconds: 10000
+  WayToBuy:
+  - _currency: {fileID: 11400000, guid: 9ed917fa986a6af478e89b100912da71, type: 2}
+    _aountOfCurency: 1100
+  - _currency: {fileID: 11400000, guid: 5c740a6da01e2264d9ff6578b583d67e, type: 2}
+    _aountOfCurency: 20
